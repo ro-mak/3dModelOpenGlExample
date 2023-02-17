@@ -133,7 +133,7 @@ class ObjectModel(private val context: Context) {
         val vertexStride =
             (COORDS_PER_VERTEX + TEX_COORDS_PER_VERTEX + NORMALS_PER_VERTEX) * FLOAT_SIZE_BYTES
         // Bind the vertex buffer object (VBO) to the OpenGL context
-        GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, vertexBufferIds[0])
+        GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, vertexBufferId)
 
         // Associate the position data with the shader program attribute
         GLES20.glVertexAttribPointer(
