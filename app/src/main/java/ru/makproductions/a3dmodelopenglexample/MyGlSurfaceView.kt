@@ -1,4 +1,5 @@
 import android.content.Context
+import android.graphics.PixelFormat
 import android.opengl.GLSurfaceView
 import ru.makproductions.a3dmodelopenglexample.R
 
@@ -6,14 +7,17 @@ class MyGlSurfaceView(context: Context) : GLSurfaceView(context) {
     private val renderer: MyGlRenderer
 
     init {
-        // Create an OpenGL ES 2.0 context
-        setEGLContextClientVersion(2)
+        // Set the custom pixel format for the surface holder
+        holder.setFormat(PixelFormat.RGBA_8888)
 
-        // Create a renderer and set it as the glSurfaceView's renderer
+        // Set the OpenGL context version and client version
+        setEGLContextClientVersion(3)
+
+        // Create the OpenGL renderer and set it to this view
         renderer = MyGlRenderer(context, R.raw.test_object)
         setRenderer(renderer)
 
-        // Render the view continuously
-        renderMode = RENDERMODE_CONTINUOUSLY
+        // Set the render mode to only render when there are updates
+        renderMode = RENDERMODE_WHEN_DIRTY
     }
 }
